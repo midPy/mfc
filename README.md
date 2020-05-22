@@ -44,5 +44,6 @@ is a part of the viewer).
 AND..
 ---------------
 -Vim keymap in text-editor
+
 -Git support
           
