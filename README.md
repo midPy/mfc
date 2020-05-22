@@ -18,4 +18,4 @@ included with this distribution package.
 Features
 ------------
 
-Working..
+Working.. (all info in dev-branch)
