@@ -75,7 +75,7 @@ class DirectoryControl(object):
         nplace = str(input('Path with dir to change: '))
         try:
             os.chdir(cdir, nplace)
-            print('Dir was change')
+            print('Dir was changed')
         except OSError:
             print(f'Directory "{nplace}" is not exist in this path')
             sys.exit()
