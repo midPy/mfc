@@ -1,11 +1,12 @@
-###########################
-# MFC FILE COMMANDER      #
-# core.py - Dev 0.0.3     #
-# 2020, Nikita Tarasenko  #
-###########################
+###########################    ╲*-                  -*╱                              
+# MFC FILE COMMANDER      #     ╲*█*╲     *      ╱*█*╱     
+# core.py - Dev 0.0.3     #      ╲*██*╲  ╱▐╲  ╱*██*╱            
+# 2020, Nikita Tarasenko  #        ╲*█ *▄ * ▄* █*╱                                 
+###########################          *╱  ╲▐╱  ╲*
+#▐#▐#▐#▐#▐#▐#▐#▐#▐#▐#▐#▐#▐#               *
 from __future__ import (absolute_import, division, print_function)
-
 import os
+import sys
 import shutil
 import tempfile
 from os.path import join, isdir, realpath, exists
@@ -21,7 +22,10 @@ class DirectoryControl(object):
     
     def __init__(self, cdir):
         self.cdir = cdir
-        
+        cdir = str(os.getcwd())
+        global path_list
+        path_list = [cdir] #to write path-history
+
     
 
     def DirectoryView(self, cur_disc=os.listdir()):
@@ -68,14 +72,28 @@ class DirectoryControl(object):
         """Method 'DirectoryChange' - change the current 
         working directory to the specified with arg 'cdir'
         """
-        pass
+        nplace = str(input('Path with dir to change: '))
+        try:
+            os.chdir(cdir, nplace)
+            print('Dir was change')
+        except OSError:
+            print(f'Directory "{nplace}" is not exist in this path')
+            sys.exit()
+
+        if os.path.exists(nplace):
+            os.chdir(nplace)
+        else:
+            raise OSError
 
 
     def DirectoryMove(self, cdir):
         """Method 'DirectoryMove' - moving the current
         working directory to the another path with arg 'cdir'
         """
-        pass
+        new_path = str(input('Insert here new absolute path: '))
+        shutil.move(cdir, new_path)
+        print(f'Complete! Now its {cdir}') #debug
+
 
 
 class FilesControl(DirectoryControl): 
