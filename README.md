@@ -24,20 +24,23 @@ In plan:
  contents of tar, ar, rpm, zip, cpio, lha and rar archives just
  like local files.
                  
-       *Almost all operations work with the virtual file system,
-	      enabling you to do complex tasks, like viewing files in
-	      archives on an FTP server.
-        *FTP support
+ *Almost all operations work with the virtual file system,
+ enabling you to do complex tasks, like viewing files in
+ archives on an FTP server.
+ 
+ *FTP support
           
-  *Mouse support on most terminal emulators for X Window System
-	 as well as on the Linux console.
+ *Mouse support on most terminal emulators for X Window System
+ as well as on the Linux console.
           
-          *Learn Keys: GNU Midnight Commander may be configured at run
-	         time to support any kind of input keys for a given terminal,
-	         making its operation possible even on most weird terminals.
+*Learn Keys: GNU Midnight Commander may be configured at run
+ time to support any kind of input keys for a given terminal,
+ making its operation possible even on most weird terminals.
 
-	        *Text and hex editors are available for you to use (hex editor
-	         is a part of the viewer).
+*Text and hex editors are available for you to use (hex editor
+is a part of the viewer).
+
+
 AND..
 ---------------
 -Vim keymap in text-editor
