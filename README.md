@@ -41,9 +41,8 @@ In plan:
 is a part of the viewer).
 
 
-AND..
----------------
--Vim keymap in text-editor
+About Contributing
+-------------------
 
--Git support
-          
+If you have some ideas about source of MFC - write me on the mail, before pull-requesting:
+-arcadman2018@gmail.com
