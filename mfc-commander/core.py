@@ -4,11 +4,18 @@
 # 2020, Nikita Tarasenko  #        ╲*█ *▄ * ▄* █*╱                                 
 ###########################          *╱  ╲▐╱  ╲*
 #▐#▐#▐#▐#▐#▐#▐#▐#▐#▐#▐#▐#▐#               *
+
+"""'core' - MFC Basic files and directory control module - 
+took arguments 'cdir' and 'file' before start
+(or goes to the home dir and choose first dir or file by default)"""
+
 from __future__ import (absolute_import, division, print_function)
 import os
 import sys
 import shutil
 import tempfile
+from timeit import default_timer as oper_time
+import numpy
 from os.path import join, isdir, realpath, exists
 
 
@@ -20,22 +27,21 @@ class DirectoryControl(object):
        rename it, etc.
     """
     
-    def __init__(self, cdir):
+    def __init__(self, cdir = None, path_list = None):
         self.cdir = cdir
-        cdir = str(os.getcwd())
-        global path_list
-        path_list = [cdir] #to write path-history
+        path_list = []
 
     
-
     def DirectoryView(self, cur_disc=os.listdir()):
         """Method 'DirectoryBaseActions' with actions,
            like make new dir(s), remove dir(s), archive dir(s)
            with diverse formats (.7z, .bzip, .tar, .zip)
         """
+        oper_timetest = oper_time()
         current_path = os.getcwd()
-        print(f'Current path now: {current_path}')
-        print(*cur_disc, sep='\n')
+        elapsed = oper_time() - oper_timetest
+        print_format = "{:<2} function was executed in {:.10f} secs."
+        print(print_format.format(current_path, elapsed))
       
     def DirectoryMake(self):
         """Method 'DirectoryMake' - make new dir
@@ -84,6 +90,11 @@ class DirectoryControl(object):
             os.chdir(nplace)
         else:
             raise OSError
+  
+""" def FileMove(self, file):
+        file = os.listdir([0])
+        print(file) #debug
+        sys.getsizeof(file)""" #not working
 
 
     def DirectoryMove(self, cdir):
@@ -113,7 +124,7 @@ class FilesControl(DirectoryControl):
         """
         new_filename = str(input('Get new name to file: '))
         os.rename(file, new_filename)
-        print(f'Complete! Now its {file}')
+        #print(f'Complete! Now its {file}')
 
         
 
@@ -122,28 +133,23 @@ class FilesControl(DirectoryControl):
         Remove chosen file with help
         of arg 'file'
         """
-        tmp_file = tempfile.NamedTemporaryFile(file + 'tmp.txt')
-        shutil.copy(file, tmp_file, )
+        oper_timetest = oper_time()
         os.remove(file)
-        print('Complete this shit!')
-        try:
-            for i in range(0, os.listdir()):
-               if file == i:
-                  os.remove(file)
-        except FileNotFoundError:
-            raise FileNotFoundError
+        elapsed = oper_time() - oper_timetest
+        print_format = "{:<2} function was executed in {:.10f} secs."
+        print(print_format.format(os.__name__, elapsed))
         
-    def Touch(self):
+    def FileTouch(self):
         """
         Make new file
         """
         name = str(input('Give name to new file: '))
         new_file = open(name, 'tw', encoding='utf-8')
         new_file.close()
-        print(f'Complete of making file: {name}')
-        
+        #print(f'Complete of making file: {new_file}')
+     
            
-
+     # TODO: Make queue method for files
 
     def FilesOpenFunction(self, file):
         """Method 'FilesOpenFunction' -
