@@ -1,7 +1,7 @@
 # mfc
 Introduction
 ------------
-
+(когда-нибудь я перепишу здесь всё и дойдут руки до этого проекта)
 MidGotchi File Commander (in abbreviation - MFC) is a user shell with
 text-mode full-screen interface.  It can be run on the OS console,
 in xterm and other terminal emulators.
